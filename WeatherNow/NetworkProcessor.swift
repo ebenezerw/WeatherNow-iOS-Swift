@@ -44,7 +44,7 @@ class NetworkProcessor
             }
         }
         
-        dataTask.resume()
+        dataTask.resum
     }
     
 }
