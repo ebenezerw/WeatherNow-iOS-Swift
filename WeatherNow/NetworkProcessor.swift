@@ -32,8 +32,14 @@ class NetworkProcessor
                     case 200:
                         //successful response
                         if let data = data {
-                            print(data)
-                        }
+                            do{
+                            let jsonDictionary = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                                
+                                completion(jsonDictionary as? [String: Any])
+                            } catch let error as NSError {
+                                print("Error processing json data: \(error.localizedDescription)")
+                            }
+                    }
                         
                     default:
                         print("HTTP Response Code: \(httpResponse.statusCode)")
